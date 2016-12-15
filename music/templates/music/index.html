@@ -1,0 +1,17 @@
+{% if not albums %}
+<h1>No albums found!</h1>
+{% else %}
+<h2>ALBUMS: </h2><br />
+<ul>
+    {% for album in albums %}
+    <li>
+        <a href="{% url 'music:album_detail' album.id %}"><h4>{{album}}</h4></a>
+        <ul>
+            {% for song in album.song_set.all %}
+            <li>{{song.title}}</li>
+            {% endfor %}
+        </ul>
+    </li>
+    {% endfor %}
+</ul>
+{% endif %}
